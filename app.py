@@ -26,6 +26,12 @@ class ResponseObjects(BaseModel):
     positions: List[int] = Field(default=[1, 5])
     is_aws: Optional[float] = Field(default=False)
 
+@inferless.config
+class Config(BaseModel):
+    is_batched_input: bool = True
+    batch_size: int = 2
+    batch_window: int = 50000
+
 class InferlessPythonModel:
 
     # replace ##task_type## and ##huggingface_name## with appropriate values
