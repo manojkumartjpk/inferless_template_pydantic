@@ -27,7 +27,7 @@ class ResponseObjects(BaseModel):
     is_aws: Optional[float] = Field(default=False)
 
 @inferless.config
-class Config(BaseModel):
+class Config():
     is_batched_input: bool = True
     batch_size: int = 2
     batch_window: int = 50000
