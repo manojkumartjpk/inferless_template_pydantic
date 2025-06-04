@@ -33,7 +33,7 @@ class InferlessPythonModel:
         self.tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
         self.streamer = TextIteratorStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
 
-    async def infer(self, inputs, stream_output_handler):
+    def infer(self, inputs, stream_output_handler):
         prompt = inputs.TEXT
         
         # GPT-Neo doesn't use chat format; it's just a plain prompt
@@ -54,10 +54,10 @@ class InferlessPythonModel:
 
         for new_text in self.streamer:
             output_dict = {"OUT": new_text}
-            await stream_output_handler.send_streamed_output(output_dict)
+            stream_output_handler.send_streamed_output(output_dict)
         thread.join()
 
-        await stream_output_handler.finalise_streamed_output()
+        stream_output_handler.finalise_streamed_output()
 
     def finalize(self):
         self.model = None
