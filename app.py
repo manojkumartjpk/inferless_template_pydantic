@@ -22,7 +22,7 @@ class RequestObjects(BaseModel):
 class ResponseObjects(BaseModel):
     OUT: str = Field(default='Test output')
 
-@inferless.config
+@inferless.config()
 class Config(BaseModel):
     is_streaming_output: bool = True
 
