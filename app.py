@@ -11,6 +11,8 @@ from typing import List, Optional, Dict
 from threading import Thread
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
 
+MODEL_NAME = "EleutherAI/gpt-neo-125m"
+
 @inferless.request
 class RequestObjects(BaseModel):
     TEXT: str = Field(default="a horse near a beach")
@@ -18,11 +20,7 @@ class RequestObjects(BaseModel):
 
 @inferless.response
 class ResponseObjects(BaseModel):
-    generated_txt: str = Field(default='Test output')
-    count_iterations: int = Field(default=4)
-    quality: float = Field(default=0.7)
-    positions: List[int] = Field(default=[1, 5])
-    is_aws: Optional[float] = Field(default=False)
+    OUT: str = Field(default='Test output')
 
 @inferless.config
 class Config(BaseModel):
