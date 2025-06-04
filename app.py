@@ -60,5 +60,4 @@ class InferlessPythonModel:
         await stream_output_handler.finalise_streamed_output()
 
     def finalize(self):
-        self.model = None
-        self.tokenizer = None
+        self.pipe = None
