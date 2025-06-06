@@ -29,7 +29,7 @@ class ResponseObjects(BaseModel):
 @inferless.config
 class Config(BaseModel):
     is_batched_input: bool = True
-    batch_size: int = 2
+    batch_size: int = 1
     batch_window: int = 50000
 
 class InferlessPythonModel:
