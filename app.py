@@ -14,7 +14,6 @@ class RequestObjects(BaseModel):
     input_image_url: str = Field(default='https://hello.world')
     count_iterations: int = Field(default=4)
     prompt: str = Field(default="a horse near a beach")
-    mask_arr: List[int] = Field(default=[1, 5])
     is_aws: Optional[bool] = None
 
 
